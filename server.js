@@ -51,7 +51,7 @@ router.route('/customers')
 
 	// create a customer (accessed at POST http://localhost:8080/customers)
 	.post(function(req, res) {
-		console.log(req);
+		console.log(process.env.PROD_MONGODB);
 		
 		var customer = new Customer();		// create a new instance of the customer model
 		customer.id = req.body.id;  // set the customers name (comes from the request)
