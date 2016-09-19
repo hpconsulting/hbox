@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080; // set our port
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/hbox'); // connect to our database
+mongoose.connect(process.env.PROD_MONGODB); // connect to our database
 var Customer     = require('./app/models/customer');
 
 var db = mongoose.connection;
