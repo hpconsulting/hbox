@@ -15,9 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var port     = process.env.PORT || 8080; // set our port
+var mongobase = process.env.MONGODB_URI+'?authSource=dbWithUserCredentials' || 'mongodb://localhost/happit';
 
 var mongoose   = require('mongoose');
-mongoose.connect(process.env.PROD_MONGODB); // connect to our database
+mongoose.connect(mongobase); // connect to our database
 var Customer     = require('./app/models/customer');
 
 var db = mongoose.connection;
@@ -51,7 +52,6 @@ router.route('/customers')
 
 	// create a customer (accessed at POST http://localhost:8080/customers)
 	.post(function(req, res) {
-		console.log(process.env.PROD_MONGODB);
 		
 		var customer = new Customer();		// create a new instance of the customer model
 		customer.id = req.body.id;  // set the customers name (comes from the request)
