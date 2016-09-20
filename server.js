@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var port     = process.env.PORT || 8080; // set our port
-var mongobase = process.env.MONGODB_URI+'?authSource=dbWithUserCredentials' || 'mongodb://localhost/happit';
+var mongobase = 'mongodb://localhost/happit';
 
 var mongoose   = require('mongoose');
 mongoose.connect(mongobase); // connect to our database

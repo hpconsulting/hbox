@@ -1,12 +1,16 @@
 {
   "name": "node-api",
+  "description": "Simple API Node.js",
   "main": "server.js",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/oxynum/hbox"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "monitor": "nodemon server.js",
+    "deploy": "gcloud app deploy"
   },
   "author": "H",
   "license": "MIT",
