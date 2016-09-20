@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git://github.com/oxynum/hbox"
   },
+  "engines": {
+      "node": "~4.2"
+  },
   "scripts": {
     "start": "node server.js",
     "monitor": "nodemon server.js",
