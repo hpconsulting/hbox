@@ -97,12 +97,11 @@ router.route('/customers')
 	   customer.groupBox = (req.body.groupBox? req.body.groupBox.toString() : null);
 	   customer.id_shop_list = parseInt(req.body.id_shop_list);
 	   customer.force_id = Boolean(req.body.force_id);
-		console.log(customer);
 		customer.save(function(err) {
 			if (err)
 				res.send(req);
 
-			res.json({ message: 'Customer created!', body:  customer});
+			res.json({ message: 'Customer created!'});
 		});
 
 		
