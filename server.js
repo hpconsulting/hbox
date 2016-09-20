@@ -138,7 +138,7 @@ router.route('/customers/:customer_id')
 			if (err)
 				res.send(err);
 
-			customer = (req.body;
+			customer = req.body;
 			customer.save(function(err) {
 				if (err)
 					res.send(err);
