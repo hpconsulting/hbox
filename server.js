@@ -61,7 +61,7 @@ router.route('/customers')
 		console.log(customer);
 		customer.save(function(err) {
 			if (err)
-				res.send(err);
+				res.send(req);
 
 			res.json({ message: 'Customer created!', body:  customer});
 		});
