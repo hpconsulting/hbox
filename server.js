@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var app        = express();
 var morgan     = require('morgan');
 var moment 	   = require('moment');
+var _ 		   = require('lodash');
 
 // configure app
 app.use(morgan('dev')); // log requests to the console
@@ -54,54 +55,40 @@ router.route('/customers')
 	// create a customer (accessed at POST http://localhost:8080/customers)
 	.post(function(req, res) {
 		var customer = new Customer();		// create a new instance of the customer model
+		var collection = _.reject(req.body, function(item){
+			return item === null;
+		});
+		console.log(collection);
 
-		customer.id = parseInt(req.body.id);
-	   customer.id_shop = parseInt(req.body.id_shop);
-	   customer.id_shop_group = parseInt(req.body.id_shop_group);
-	   customer.secure_key = (req.body.secure_key ? req.body.secure_key.toString() : null)
-	   customer.note = (req.body.note? req.body.note.toString() : null);
-	   customer.id_gender = parseInt(req.body.id_gender);
-	   customer.id_default_group = parseInt(req.body.id_default_group);
-	   customer.id_lang = parseInt(req.body.id_lang);
-	   customer.lastname = (req.body.lastname? req.body.lastname.toString() : null);
-	   customer.firstname = (req.body.firstname? req.body.firstname.toString() : null);
-	   customer.birthday = moment(req.body.birthday);
-	   customer.email = (req.body.email? req.body.email.toString() : null);
-	   customer.newsletter = Boolean(req.body.newsletter);
-	   customer.ip_registration_newsletter = (req.body.ip_registration_newsletter? req.body.ip_registration_newsletter.toString() : null);
-	   customer.newsletter_date_add = moment(req.body.newsletter_date_add);
-	   customer.optin = Boolean(req.body.optin);
-	   customer.website = (req.body.website? req.body.website.toString() : null);
-	   customer.company = (req.body.company? req.body.company.toString() : null);
-	   customer.siret = (req.body.siret? req.body.siret.toString() : null);
-	   customer.ape = (req.body.ape? req.body.ape.toString() : null);
-	   customer.outstanding_allow_amount = parseInt(req.body.outstanding_allow_amount);
-	   customer.show_public_prices = parseInt(req.body.show_public_prices);
-	   customer.id_risk = parseInt(req.body.id_risk);
-	   customer.max_payment_days = parseInt(req.body.max_payment_days);
-	   customer.passwd = (req.body.passwd? req.body.passwd.toString() : null);
-	   customer.last_passwd_gen = moment(req.body.last_passwd_gen);
-	   customer.active = parseInt(req.body.active);
-	   customer.is_guest = Boolean(req.body.is_guest);
-	   customer.deleted = Boolean(req.body.deleted);
-	   customer.date_add = moment(req.body.date_add);
-	   customer.date_upd = moment(req.body.date_upd);
-	   customer.years = moment(req.body.years);
-	   customer.days = moment(req.body.days);
-	   customer.months = moment(req.body.months);
-	   customer.geoloc_id_country = parseInt(req.body.geoloc_id_country);
-	   customer.geoloc_id_state = parseInt(req.body.geoloc_id_state);
-	   customer.geoloc_postcode = (req.body.geoloc_postcode? req.body.geoloc_postcode.toString() : null);
-	   customer.logged = parseInt(req.body.logged);
-	   customer.id_guest = parseInt(req.body.id_guest);
-	   customer.groupBox = (req.body.groupBox? req.body.groupBox.toString() : null);
-	   customer.id_shop_list = parseInt(req.body.id_shop_list);
-	   customer.force_id = Boolean(req.body.force_id);
+		_.forEach(collection, function(entry){
+			customer[entry] = entry;
+		});
+
+	   // customer.max_payment_days = parseInt(req.body.max_payment_days);
+	   // customer.passwd = (req.body.passwd? req.body.passwd.toString() : null);
+	   
+	   // customer.active = parseInt(req.body.active);
+	   // customer.is_guest = Boolean(req.body.is_guest);
+	   // customer.deleted = Boolean(req.body.deleted);
+	   
+	   
+	   
+	   
+	   
+	   // customer.geoloc_id_country = parseInt(req.body.geoloc_id_country);
+	   // customer.geoloc_id_state = parseInt(req.body.geoloc_id_state);
+	   // customer.geoloc_postcode = (req.body.geoloc_postcode? req.body.geoloc_postcode.toString() : null);
+	   // customer.logged = parseInt(req.body.logged);
+	   // customer.id_guest = parseInt(req.body.id_guest);
+	   // customer.groupBox = (req.body.groupBox? req.body.groupBox.toString() : null);
+	   // customer.id_shop_list = parseInt(req.body.id_shop_list);
+	   // customer.force_id = Boolean(req.body.force_id);
+	   console.log(customer);
 		customer.save(function(err) {
 			if (err)
 				res.send(req);
 
-			res.json({ message: 'Customer created!'});
+			res.json({ message: 'Customer created!', body:  customer});
 		});
 
 		
