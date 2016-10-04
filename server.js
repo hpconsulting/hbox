@@ -92,16 +92,6 @@ router.route('/customers')
 		});
 
 		
-	})
-
-	// get all the customers (accessed at GET http://localhost:8080/api/customers)
-	.get(function(req, res) {
-		Customer.find(function(err, customer) {
-			if (err)
-				res.send('POST: ' +req);
-
-			res.json(customer);
-		});
 	});
 
 // on routes that end in /customers/:customer_id
