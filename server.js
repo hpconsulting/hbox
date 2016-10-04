@@ -86,7 +86,7 @@ router.route('/customers')
 	   console.log(customer);
 		customer.save(function(err) {
 			if (err)
-				res.send(req);
+				res.send('POST: ' + req);
 
 			res.json({ message: 'Customer created!', body:  customer});
 		});
@@ -98,7 +98,7 @@ router.route('/customers')
 	.get(function(req, res) {
 		Customer.find(function(err, customer) {
 			if (err)
-				res.send(err);
+				res.send('POST: ' +req);
 
 			res.json(customer);
 		});
