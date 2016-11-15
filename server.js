@@ -145,11 +145,11 @@ router.route('/customers')
 
 			res.json({ message: fastmagRequestWS, body:  collection });
 
-			unirest.post(urlTo)
-				.send({ "enseigne": enseigne, "magasin": magasin, "compte": compte, "motpasse": motpasse, "data" : fastmagRequestWS  })
-				.end(function (response) {
-				  console.log(response.body);
-				});
+			// unirest.post(urlTo)
+			// 	.send({ "enseigne": enseigne, "magasin": magasin, "compte": compte, "motpasse": motpasse, "data" : fastmagRequestWS  })
+			// 	.end(function (response) {
+			// 	  console.log(response.body);
+			// 	});
 			
 		});
 
