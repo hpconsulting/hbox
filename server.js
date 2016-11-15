@@ -164,6 +164,14 @@ router.route('/customers')
 		});
 
 		
+	})
+	.get(function(req, res){
+		Customer.find(function(err, customer) {
+			if (err)
+				res.send(err);
+
+			res.json(customer);
+		});
 	});
 
 // on routes that end in /customers/:customer_id
