@@ -56,7 +56,8 @@ router.route('/customers')
 	.post(function(req, res) {
 		var customer = new Customer();		// create a new instance of the customer model
 		var collection = req.body;
-	   console.log(customer);
+	   console.log('collection');
+	   console.log(collection);
 		customer.save(function(err, collection) {
 			if (err)
 				res.send('POST: ' + req);
