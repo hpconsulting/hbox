@@ -55,34 +55,7 @@ router.route('/customers')
 	// create a customer (accessed at POST http://localhost:8080/customers)
 	.post(function(req, res) {
 		var customer = new Customer();		// create a new instance of the customer model
-		var collection = _.reject(req.body, function(item){
-			return item === null;
-		});
-		console.log(collection);
 
-		_.forEach(collection, function(entry){
-			customer[entry] = entry;
-		});
-
-	   // customer.max_payment_days = parseInt(req.body.max_payment_days);
-	   // customer.passwd = (req.body.passwd? req.body.passwd.toString() : null);
-	   
-	   // customer.active = parseInt(req.body.active);
-	   // customer.is_guest = Boolean(req.body.is_guest);
-	   // customer.deleted = Boolean(req.body.deleted);
-	   
-	   
-	   
-	   
-	   
-	   // customer.geoloc_id_country = parseInt(req.body.geoloc_id_country);
-	   // customer.geoloc_id_state = parseInt(req.body.geoloc_id_state);
-	   // customer.geoloc_postcode = (req.body.geoloc_postcode? req.body.geoloc_postcode.toString() : null);
-	   // customer.logged = parseInt(req.body.logged);
-	   // customer.id_guest = parseInt(req.body.id_guest);
-	   // customer.groupBox = (req.body.groupBox? req.body.groupBox.toString() : null);
-	   // customer.id_shop_list = parseInt(req.body.id_shop_list);
-	   // customer.force_id = Boolean(req.body.force_id);
 	   console.log(customer);
 		customer.save(function(err) {
 			if (err)
