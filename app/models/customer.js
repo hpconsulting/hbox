@@ -2,8 +2,8 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var CustomerSchema   = new Schema({
-   id:Schema.Types.Mixed,
-   id_shop:Schema.Types.Mixed,
+//    id:Schema.Types.Mixed,
+//    id_shop:Schema.Types.Mixed,
    // id_shop_group:Number,
    // secure_key:String,
    // note:String,
