@@ -137,8 +137,6 @@ router.route('/customers')
 			
 		});
 
-		console.log(fastmagRequestWS);
-
 		
 	});
 
