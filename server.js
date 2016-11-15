@@ -8,6 +8,7 @@ var app        = express();
 var morgan     = require('morgan');
 var moment 	   = require('moment');
 var _ 		   = require('lodash');
+var unirest    = require('unirest');
 
 // configure app
 app.use(morgan('dev')); // log requests to the console
@@ -79,6 +80,15 @@ router.route('/customers')
 			var observations = '';
 			var miseEnCompte = '';
 			var famille = '';
+			var urlTo = 'http://zahav.fastmag.fr';
+
+
+
+			var enseigne = "DEMO";
+			var magasin = "CENTRAL";
+			var compte = "TEST";
+			var motpasse = "test123321";
+
 			if(collection.gender > 0) {
 				gender = "MADAME";
 			}
@@ -134,6 +144,12 @@ router.route('/customers')
 				collection.years
 
 			res.json({ message: fastmagRequestWS, body:  collection });
+
+			unirest.post(urlTo)
+				.send({ "enseigne": enseigne, "magasin": magasin, "compte": compte, "motpasse": motpasse, "data" : fastmagRequestWS  })
+				.end(function (response) {
+				  console.log(response.body);
+				});
 			
 		});
 
