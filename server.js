@@ -16,7 +16,7 @@ app.use(morgan('dev')); // log requests to the console
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 8080; // set our port
+var port     = process.env.PORT || 3333; // set our port
 var mongobase = 'mongodb://localhost/happit';
 
 var mongoose   = require('mongoose');
