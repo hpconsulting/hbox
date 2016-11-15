@@ -56,9 +56,17 @@ router.route('/customers')
 	// create a customer (accessed at POST http://localhost:8080/customers)
 	.post(function(req, res) {
 		var collection = req.body;
+		_.forEach(collection, function(val){
+			if(_.isNull(val)){
+				return "";
+			}
+		});
+
+		console.log('collection *------------');
+		console.log(collection);
 		var customer = new Customer(collection);		// create a new instance of the customer model
-	   console.log('customer');
-	   console.log(customer);
+	   	console.log('customer');
+	   	console.log(customer);
 		customer.save(function(err) {
 			if (err) {
 				res.send('POST: ' + req);
