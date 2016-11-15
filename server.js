@@ -37,6 +37,15 @@ db.once('open', function() {
 // create our router
 var router = express.Router();
 
+var null2String = function(val) {
+			if(_.isNull(val)){
+				return "";
+			} else {
+				return val;
+			}
+
+		}
+
 // middleware to use for all requests
 router.use(function(req, res, next) {
 	// do logging
@@ -55,14 +64,7 @@ router.route('/customers')
 
 	// create a customer (accessed at POST http://localhost:8080/customers)
 	.post(function(req, res) {
-		var collection = req.body;
-		
-		_.forEach(collection, function(val){
-			if(_.isNull(val)){
-				console.log('collection *------------');
-			}
-		});
-		console.log('collection *------------');
+		var collection = req.body;		
 		console.log(collection);
 		var customer = new Customer(collection);		// create a new instance of the customer model
 	   	console.log('customer');
@@ -127,9 +129,9 @@ router.route('/customers')
 				pipe +
 				portable +
 				pipe +
-				collection.days +
+				null2String(collection.days) +
 				pipe +
-				collection.months +
+				null2String(collection.months) +
 				pipe + 
 				cartedefidelite +
 				pipe +
@@ -139,9 +141,9 @@ router.route('/customers')
 				pipe +
 				observations +
 				pipe +
-				collection.passwd +
+				null2String(collection.passwd) +
 				pipe +
-				collection.company +
+				null2String(collection.company) +
 				pipe +
 				collection.id +
 				pipe +
@@ -149,7 +151,7 @@ router.route('/customers')
 				pipe +
 				famille +
 				pipe +
-				collection.years
+				null2String(collection.years)
 
 			res.json({ message: fastmagRequestWS, body:  collection });
 
