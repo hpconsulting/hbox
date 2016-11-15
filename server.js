@@ -80,7 +80,7 @@ router.route('/customers')
 			var observations = '';
 			var miseEnCompte = '';
 			var famille = '';
-			var urlTo = 'http://zahav.fastmag.fr';
+			var urlTo = 'http://zahav.fastmag.fr/ediwebsrv.ips';
 
 
 
