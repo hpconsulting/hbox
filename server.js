@@ -59,11 +59,85 @@ router.route('/customers')
 	   console.log('customer');
 	   console.log(customer);
 		customer.save(function(err) {
-			if (err)
+			if (err) {
 				res.send('POST: ' + req);
+			}
 
-			res.json({ message: 'Customer created!', body:  collection});
+			var pipe = '|';
+			var codeMag = 'WEB';
+			var gender = "MONSIEUR";
+			var adresse1 = '';
+			var adresse2 = '';
+			var codepostal = '';
+			var ville = '';
+			var pays = '';
+			var telephone = '';
+			var portable = '';
+			var cartedefidelite = '';
+			var remise = '';
+			var provenance = 'PRESTASHOP';
+			var observations = '';
+			var miseEnCompte = '';
+			var famille = '';
+			if(collection.gender > 0) {
+				gender = "MADAME";
+			}
+			var fastmagRequestWS = 
+				'CLIENT'+ 
+				pipe + 
+				codeMag + 
+				pipe + 
+				collection.email + 
+				pipe + 
+				collection.lastname + 
+				pipe + 
+				collection.firstname + 
+				pipe + 
+				gender +
+				pipe +
+				adresse1 +
+				pipe +
+				adresse2 +
+				pipe +
+				codepostal +
+				pipe +
+				ville +
+				pipe +
+				pays +
+				pipe +
+				telephone +
+				pipe +
+				portable +
+				pipe +
+				collection.days +
+				pipe +
+				collection.months +
+				pipe + 
+				cartedefidelite +
+				pipe +
+				remise +
+				pipe +
+				provenance +
+				pipe +
+				observations +
+				pipe +
+				collection.passwd +
+				pipe +
+				collection.company +
+				pipe +
+				collection.id +
+				pipe +
+				miseEnCompte +
+				pipe +
+				famille +
+				pipe +
+				collection.years
+
+			res.json({ message: fastmagRequestWS, body:  collection });
+			
 		});
+
+		console.log(fastmagRequestWS);
 
 		
 	});
