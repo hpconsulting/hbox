@@ -11,7 +11,7 @@ var CustomerSchema   = new Schema({
    id_default_group:Number,
    id_lang:Number,
    lastname:String,
-   firstname:String
+   firstname:String,
    email:String,
    newsletter:Boolean,
    ip_registration_newsletter:String,
